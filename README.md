@@ -19,7 +19,7 @@ I hope you find this guide helpful!
 
 This technique aims to distill personal conversation data into something that fits in the “custom instructions” setting on the ChatGPT interface. It’s likely possible to utilize this method for API calls as well, however, keep in mind you still need access to the Advanced Data Analysis plugin on the ChatGPT interface to use this technique. For the purposes of this demonstration, I assume you will be using what’s exported from ChatGPT’s website.
 
-This is not going to be a single-shot prompt. Think of this as a demonstration of prompt “guidance”, more closely resembling CoT reasoning, although slightly different. Chunking and processing this in reasonable, actionable steps is vital for achieving the desired results effectively and efficiently. If you expect it to do everything all once, it’s going to get confused and forget all of the details it was supposed to include and do.
+This is not going to be a single-shot prompt. Think of this as a demonstration of prompt “guidance”, more closely resembling CoT reasoning, although slightly different. Chunking and processing this in reasonable, actionable steps is vital for achieving the desired results effectively and efficiently. If you expect it to do everything all at once, it’s going to get confused and forget all of the details it was supposed to include and do.
 
 
 ## PART I: GATHERING & OPTIMIZING THE DATA
