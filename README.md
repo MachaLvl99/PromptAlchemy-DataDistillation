@@ -1,7 +1,13 @@
 # DATA DISTILLATION
 ### A prompt-engineering technique for creating personalized custom instructions on ChatGPT
 
-Hey there everyone! This is my first attempt at sharing some of my “prompt engineering” tricks and techniques, so if people want to see more, please like this post and let me know! I’m more than happy to share more if folks are interested. I’m trying to figure out a way create my own little cookbook and finally start sharing my work, so if anyone has suggestions there too, I’m happy to try them!
+![Modern Western-anime hybrid style animated male character with a slight tan, chiseled jawline, short pointed dark hair styled in a slight mohawk, thick angular eyebrows, striking yellow eyes, short pointed beard and mustache, wearing a high-collared dark gray cloak with fur lining. This character intently examines a glowing, translucent flask containing a luminescent liquid in a rustic, dimly lit alchemical laboratory. The room is filled with stone walls, a wooden window with a diamond-patterned lattice, and an assortment of alchemical tools, apparatuses, and ingredients. He's surrounded by a large distillation apparatus, wooden shelves holding glass containers, and a wooden bench providing a workspace.](TechniqueImg.png)
+>Image Generated via DALL-E 3
+
+## INTRODUCTION:
+
+Welcome to the first prompting how-to guide in my Prompt Alchemy series! This is my first attempt at sharing some of my prompt "engineering” techniques, tips, and tricks, so if you like this repo, please consider giving it a star or forking it to contribute. You can also share it within your network to help others find it! I’m more than happy to share more if folks are interested. 
+
 This guide should allow you to have more personalized interactions with ChatGPT leveraging successful conversations you’ve had with it before to create specialized prompts inside the “custom instructions” settings in ChatGPT. I call this data “distillation” and not something like “summarization” or “optimization”, because the key here is not to retain the same context or structure, but to condense and transform data into something that is more suitable for this use case. 
 
 Keep in mind that this is aimed at using *your own* data to work with through this process with GPT. The intention is to produce a personalized output for personal use. If you are not comfortable letting GPT work with such a dataset and the contents inside it, then this technique is likely not for you. Adapting this framework to handle alternative uses from other data (that you own) will have to be done by yourself. 
@@ -10,12 +16,6 @@ I hope you find this guide helpful!
 
 | ⚠️ NOTE: | This technique requires access to the “Advanced Data Analysis” plugin.  |
 |-------|-------------------------------------------------------------------------|
-
-
-
-
-
-## INTRODUCTION:
 
 This technique aims to distill personal conversation data into something that fits in the “custom instructions” setting on the ChatGPT interface. It’s likely possible to utilize this method for API calls as well, however, keep in mind you still need access to the Advanced Data Analysis plugin on the ChatGPT interface to use this technique. For the purposes of this demonstration, I assume you will be using what’s exported from ChatGPT’s website.
 
@@ -40,7 +40,7 @@ Before we continue, understand that GPT will likely try to verify with you if wh
 
 It's a good idea to outline your intentions first before you consider what and how to prompt. Let’s go over that now. Below is a high-level overview of what we’re trying to do and how to do it.
 
-**Overarching Goal: To create a personalized custom instruction set based off the conversation data in the dataset.**
+### Overarching Goal: To create a personalized custom instruction set based off the conversation data in the dataset.
 
 Steps: 
 1.	Express intentions and overarching goal to GPT
@@ -50,20 +50,19 @@ a.	Step-by-step analysis instructions
 4.	Amalgamate results into the custom instruction format
    
 Now, let’s construct the prompt to express our goal to GPT, and what we expect it to do:
-```
-“This dataset that we are working with is my accumulated personal interaction data as a user.
-My overarching goal for this conversation is to concoct a set of custom instructions using this dataset
-to personalize future interactions and simultaneously simplify further instructions.”
-```
+
+>“This dataset that we are working with is my accumulated personal interaction data as a user.
+>My overarching goal for this conversation is to concoct a set of custom instructions using this dataset to personalize future interactions and simultaneously simplify further instructions.”
+
 
 If you would like GPT to generate its own instructions for achieving the goal, simply append this:
 
-```
-“Could you help me achieve this and analyze my data?”
-```
+
+>“Could you help me achieve this and analyze my data?”
+
 Asking for a confirmation check like this allows the AI to respond by both verifying its understanding of your prompt and proving it understood what you asked by explaining how it would accomplish this task, which typically occurs in a list-like fashion that’s easy to follow. You do not need to explicitly tell GPT to construct the analysis steps, because it will do that on its own here.
 
-| ⚠️ CAUTION: | The addition to the prompt here does not need to be replicated verbatim, but the final clause MUST be an interrogative clause, and it MUST end its punctuation with a ‘?’ for the behavior to be replicated.  AKA The prompt must end in a question.  |
+| ⚠️ CAUTION: | The addition to the prompt here does not need to be replicated verbatim, but the final clause MUST be an interrogative clause, and it MUST end its punctuation with a ‘?’ for the behavior to be replicated.    |
 |-------|-------------------------------------------------------------------------|
 
 If you would like to use the pre-built process, it can be replicated as follows. Append this to the original prompt:
@@ -86,37 +85,37 @@ To cross-check and verify the successful steps my iteration used to accomplish t
 <details>
   <summary><h3>1. Basic Statistics </h3></summary>
   
-  1. Total number of conversations with assistant
-  2. Total number of messages sent
-  3. Average length of messages sent
+  1. #### Total number of conversations with assistant
+  2. #### Total number of messages sent
+  3. #### Average length of messages sent
   
 </details>
 <details>
   <summary><h3>2. Content Analysis </h3></summary>
   
-  1. Topics of interest: keyword extraction and/or topic modeling
+  1. #### Topics of interest: keyword extraction and/or topic modeling
      1. If the model fails to achieve this, you can suggest an n-gram, omitting function words
-  2. Frequently used phrases or words: use Latent Dirichlet Allocation (LDA)
+  2. #### Frequently used phrases or words: use Latent Dirichlet Allocation (LDA)
      1. The results might look vague, but combined with other results, it’ll prove important in time.
-  3. Sentiment analysis: Understanding user’s tone as generally positive, neutral, or negative.
+  3. #### Sentiment analysis: Understanding user’s tone as generally positive, neutral, or negative.
      1. High positive and/or neutral Sentiments is ideal, although the amount of each will likely vary for all users. Having high counts in both typically indicates constructive and informational interactions.
      2. I do not know what would happen with a high negative sentiment. I’d recommend to let the AI analyze the data to identify areas of improvement if this occurs. Keep that info noted; it may be important for it to come back to later.
-  4. Specific requests / questions frequently posed to the assistant
+  4. #### Specific requests / questions frequently posed to the assistant
      1. I suspect this step is used to identify key repetitive syntax, so it can be implemented into custom instructions automatically by default.
   
 </details>
 <details>
   <summary><h3>3. Interaction Patterns </h3></summary>
   
-  1. Message Flow: How do conversations typically flow? Do they involve back-and-forth exchanges, or are they more one-sided? The valuable metrics here are:
+  1. #### Message Flow: How do conversations typically flow? Do they involve back-and-forth exchanges, or are they more one-sided? The valuable metrics here are:
      1. Avg. number of Exchanges per conversation (are you a single-shot prompter, or do you have lengthy conversations with GPT?)
      2. Balance Ratio (For every assistant message, how many messages do you send?)
-  2. Question Patterns: How often does the user pose questions, and what types of questions dominate (e.g., "how", "what", "why")?
+  2. #### Question Patterns: How often does the user pose questions, and what types of questions dominate (e.g., "how", "what", "why")?
      1. Total Question Count (remember, not every prompt is a question)
      2. Average Number of Questions per Message
      3. Most frequent types of questions
      4. Avg. Question Length
-  3. Feedback: Do you provide feedback or corrections to the assistant’s responses?
+  3. #### Feedback: Do you provide feedback or corrections to the assistant’s responses?
      1. Positive Feedback (appreciating/complimenting the assistant)
      2. Constructive Feedback (providing suggestions or pointing out inaccuracies)
      3. Error Reporting (when you’ve explicitly told the assistant they made an error or didn’t understand)
@@ -149,11 +148,31 @@ Congratulations, you’ve just performed Data Distillation! Enjoy much easier an
 
 You can see the result for the first instruction below. This was not the final instruction; I did refine this this further and appended other personal optimizers, so I’m comfortable sharing this, as this was the immediate response. A couple values have been redacted, but this paints a picture of the result.  You can see from this data already how I use this platform and what the AI thinks is relevant for itself. Notice how long my conversations are. Recognize that quality prompting isn’t necessarily about turning everything into a single-shot prompt, but rather quality prompt *guidance* to achieve significant and interesting results. See how it compares to your result!
 
-```
-"User has engaged in [value] conversations with an average length of approximately 47 messages. User poses an average of 1.21 questions per message. User's interactions are mostly positive, with occasional constructive feedback and error reporting. User frequently asks 'What', 'How', 'Do', and 'Is' type questions and prefers detailed and comprehensive answers. User's average question length is around [value] words, indicating in-depth inquiries. User's interaction topics include development, AI discussions, linguistics, data operations, personal interactions, and scripting."
-```
+>"User has engaged in [value] conversations with an average length of approximately 47 messages. User poses an average of 1.21 questions per message.
+>User's interactions are mostly positive, with occasional constructive feedback and error reporting. User frequently asks 'What', 'How', 'Do', and 'Is' type questions and prefers detailed and comprehensive answers.
+>User's average question length is around [value] words, indicating in-depth inquiries.
+>User's interaction topics include development, AI discussions, linguistics, data operations, personal interactions, and scripting."
+
+## CONCLUSION:
+
+This guide serves as a comprehensive resource for anyone interested in elevating their interactions with ChatGPT through data distillation. By following the steps outlined, you not only personalize your experience but also engage in a fun, interactive experiment to tailor an AI assistant to your individual needs without fine-tuning the model.
+
+Remember, this process is iterative and sequential, and may require some trial and error based upon the specific responses provided by the assistant. However, the result— a more intuitive and responsive conversational agent— is well worth the effort. Whether you are a beginner curious about the potentials of AI or an expert looking to turbo-charge your prompting capabilities, this guide offers a flexible, explorative approach to get yourself going.  For those keen on delving deeper, the door to advanced data analysis and linguistic theory is now open, and the possibilities are endless.
 
 For my next technique, I’ll be writing up a helpful approach for easy, actionable image prompting with DALL-E 3.
 
 I will do my best to answer any questions and help out others when I can. Feel free to let me know what you think! I appreciate any and all feedback! 
 
+<details>
+  <summary><h2>VOCABULARY TERMS / FURTHER READING </h2></summary>
+  
+  1. #### Interrogative Clause: https://en.wikipedia.org/wiki/Interrogative
+  2. #### LDA (Latent Dirichlet Allocation): https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
+  3. #### Sentiment Analysis: https://en.wikipedia.org/wiki/Sentiment_analysis
+  4. #### N-gram: https://en.wikipedia.org/wiki/N-gram
+  
+</details>
+
+## TROUBLESHOOTING:
+
+### TBD
